@@ -3,9 +3,10 @@
 ![Python Version](https://img.shields.io/badge/Python-3.11%20%7C%203.14-blue)
 ![Machine Learning](https://img.shields.io/badge/Domain-Machine%20Learning%20%26%20Predictive%20Analytics-green)
 ![Course](https://img.shields.io/badge/SLIIT-IT3091%20Machine%20Learning-orange)
+![Build Status](https://img.shields.io/badge/Pipeline-Verified%20%26%20Leak--Free-success)
 
 ## 📌 Project Overview
-This repository contains the end-to-end Machine Learning project for predicting customer churn in a telecommunications subscription service. By leveraging statistical profiling, machine learning classification algorithms, cost-sensitive threshold optimization, and transparent AI documentation, this project equips stakeholders with actionable churn propensity scores and targeted customer retention strategies.
+This repository hosts the production-ready machine learning system for predicting customer churn in a telecommunications subscription service. By uniting statistical profiling, modular preprocessing, multi-model cross-validation, asymmetric cost optimization, and transparent AI governance, this project provides marketing and retention stakeholders with calibrated churn propensity scores and high-ROI operational retention strategies.
 
 ---
 
@@ -24,56 +25,73 @@ This repository contains the end-to-end Machine Learning project for predicting 
 ```plaintext
 IT3091-Telco-Churn-Prediction/
 ├── data/
-│   └── WA_Fn-UseC_-Telco-Customer-Churn.csv   # Telco Churn Raw Dataset (7,043 rows, 21 columns)
+│   ├── raw/
+│   │   └── WA_Fn-UseC_-Telco-Customer-Churn.csv  # Raw Dataset (7,043 rows, 21 columns)
+│   └── processed/
+│       ├── X_train.csv (5,634 rows x 35 features)
+│       ├── X_test.csv  (1,409 rows x 35 features)
+│       ├── y_train.csv (5,634 rows)
+│       └── y_test.csv  (1,409 rows)
 ├── docs/
-│   ├── problem_framing.md                    # Six problem framing dimensions & cost matrix
-│   └── decision_log.md                       # Master architectural and preprocessing decision log
+│   ├── problem_framing.md                        # Six problem framing dimensions & cost matrix
+│   ├── data_dictionary.md                        # Full 21-variable schema & semantic data types
+│   ├── decision_log.md                           # Master Decision Log (DEC-01 to DEC-09)
+│   ├── eda_insight_log.md                        # Empirical EDA findings & tenure cliff analysis
+│   ├── preprocessing_log.md                      # Leakage prevention & transformation rationale
+│   ├── business_recommendations.md               # 3-Tier retention playbook & ROI analysis
+│   ├── final_report.md                           # Master final synthesis report (All 8 rubric criteria)
+│   ├── ai_transparency_declaration.md            # AI-use disclosure & academic integrity declaration
+│   ├── youtube_demo_script.md                    # 3-minute video presentation script
+│   └── personal_learning_journey_templates.md    # 1-page A4 templates for individual grading
 ├── notebooks/
-│   └── 01_eda_and_audit.ipynb                # Initial data audit, dimensions & anomaly inspection
-├── src/                                      # Modular source code pipelines
-├── .gitignore                                # Git ignore rules for venv, checkpoints, and cache
-├── requirements.txt                          # Pinned project dependencies for reproducibility
-├── LICENSE                                   # Repository license
-└── README.md                                 # Project documentation
+│   ├── 01_eda_and_audit.ipynb                    # 8-section visual exploratory analysis
+│   ├── 02_preprocessing_and_feature_engineering.ipynb # Leak-free pipeline & before/after scaling
+│   └── 03_model_training_and_evaluation.ipynb    # 5-Fold CV, ROC/PR curves & cost thresholding
+├── reports/
+│   ├── cv_model_comparison.csv                   # Cross-validation quantitative benchmark metrics
+│   └── figures/                                  # 9 publication-grade visualization artifacts
+├── src/
+│   ├── run_eda.py                                # Visual EDA script
+│   ├── preprocessing.py                          # Modular ColumnTransformer pipeline
+│   └── train_and_evaluate.py                     # Multi-model cross-validation & evaluation script
+├── .gitignore                                    # Git ignore rules for venv, checkpoints, cache
+├── requirements.txt                              # Pinned dependencies for 100% reproducibility
+├── LICENSE                                       # Project license
+└── README.md                                     # Master documentation hub
 ```
 
 ---
 
-## ⚙️ Environment Setup & Reproduction Guide
+## 📊 Model Benchmark Summary (Stratified 5-Fold Cross-Validation)
 
-### 1. Clone the Repository
+| Classifier Model | CV ROC-AUC | CV PR-AUC | Test ROC-AUC | Test Recall | Test F1 | Total Business Cost @ $\tau^*$ |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Dummy (Naive Baseline)** | 0.5000 | 0.2654 | 0.5000 | 0.0000 | 0.0000 | $187,000 |
+| **Logistic Regression (L2)** 🏆 | **0.8463** | **0.6644** | **0.8480** | **0.7960** | **0.6272** | **$34,700** ($\tau^* \approx 0.44$) |
+| **Random Forest (Bagging)** | 0.8441 | 0.6559 | 0.8382 | 0.7217 | 0.6357 | $52,800 ($\tau^* \approx 0.38$) |
+| **HistGradientBoosting** | 0.8316 | 0.6354 | 0.8439 | 0.4997 | 0.5538 | $47,650 ($\tau^* \approx 0.28$) |
+| **SVC (RBF Kernel)** | 0.8294 | 0.6103 | 0.8311 | 0.7766 | 0.6196 | $43,700 ($\tau^* \approx 0.42$) |
+
+---
+
+## ⚙️ Quickstart & Reproduction Guide
+
 ```bash
+# 1. Clone the repository
 git clone https://github.com/IT24200314/IT3091-Telco-Churn-Prediction.git
 cd IT3091-Telco-Churn-Prediction
-```
 
-### 2. Set Up Virtual Environment
-```bash
-# Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
+# 2. Activate virtual environment
 # Windows (PowerShell):
 .\venv\Scripts\Activate.ps1
-# Windows (CMD):
-.\venv\Scripts\activate.bat
 # Linux / macOS:
 source venv/bin/activate
-```
 
-### 3. Install Dependencies
-```bash
+# 3. Install pinned dependencies
 pip install -r requirements.txt
-```
 
-### 4. Run Baseline Inspection Notebook
-```bash
+# 4. Run any visual notebook
 jupyter notebook notebooks/01_eda_and_audit.ipynb
+jupyter notebook notebooks/02_preprocessing_and_feature_engineering.ipynb
+jupyter notebook notebooks/03_model_training_and_evaluation.ipynb
 ```
-
----
-
-## 🔍 Key Findings from Initial Audit
-- **Dataset Dimensions**: 7,043 customer records across 21 feature columns.
-- **Target Distribution**: Retained (`No`) = 73.46%, Churned (`Yes`) = 26.54% (~3:1 class imbalance).
-- **Data Quality Anomaly**: 11 records possess blank whitespace (`" "`) in `TotalCharges`. All 11 records have `tenure = 0` (brand-new accounts prior to their first billing cycle). As documented in **DEC-03**, these are imputed with `0.0` to eliminate data loss and prevent survivor bias.
