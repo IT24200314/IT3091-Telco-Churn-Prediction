@@ -1,9 +1,16 @@
 # Telco Customer Churn — Data Dictionary
 
+**Dataset Fingerprint & Provenance:**
+* **Source Archive:** IBM Cognos Analytics / Kaggle Telco Customer Churn (`WA_Fn-UseC_-Telco-Customer-Churn.csv`)
+* **Cryptographic SHA-256 Fingerprint:** `16320C9C1EC72448DB59AA0A26A0B95401046BEF5D02FD3AEB906448E3055E91`
+* **Dataset Dimensions:** 7,043 observation rows $\times$ 21 attribute columns
+* **Target Variable:** `Churn` (Binary: `Yes` [26.54%], `No` [73.46%])
+
 **Unit of Analysis / Row Meaning:** Each row represents an individual telecommunications subscriber account identified by a unique `customerID`, detailing their demographic attributes, subscribed service features, billing arrangements, and churn status.
 
 | Variable Name | Semantic Description | Data Type | Value Range / Categories | Business Role |
 | :--- | :--- | :--- | :--- | :--- |
+
 | `customerID` | Unique subscriber account identifier | Categorical (Nominal) | Alphanumeric (e.g., `7590-VHVEG`) | Primary Key (Excluded from modeling) |
 | `gender` | Subscriber's recorded biological gender | Categorical (Binary) | `Male`, `Female` | Demographic feature |
 | `SeniorCitizen` | Indicator if subscriber is 65 years or older | Categorical (Binary) | `0` (No), `1` (Yes) | Demographic feature |

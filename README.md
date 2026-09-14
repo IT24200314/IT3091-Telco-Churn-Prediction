@@ -25,16 +25,11 @@ This repository hosts the production-ready machine learning system for predictin
 ```plaintext
 IT3091-Telco-Churn-Prediction/
 ├── data/
-│   ├── raw/
-│   │   └── WA_Fn-UseC_-Telco-Customer-Churn.csv  # Raw Dataset (7,043 rows, 21 columns)
-│   └── processed/
-│       ├── X_train.csv (5,634 rows x 35 features)
-│       ├── X_test.csv  (1,409 rows x 35 features)
-│       ├── y_train.csv (5,634 rows)
-│       └── y_test.csv  (1,409 rows)
+│   └── WA_Fn-UseC_-Telco-Customer-Churn.csv  # Raw Dataset (SHA256: 16320c9c..., 7,043 rows)
 ├── docs/
 │   ├── problem_framing.md                        # Six problem framing dimensions & cost matrix
-│   ├── data_dictionary.md                        # Full 21-variable schema & semantic data types
+│   ├── workflow_diagram.md                       # Mermaid & visual flowchart architecture
+│   ├── data_dictionary.md                        # 21-variable schema, semantics & SHA-256 hash
 │   ├── decision_log.md                           # Master Decision Log (DEC-01 to DEC-09)
 │   ├── eda_insight_log.md                        # Empirical EDA findings & tenure cliff analysis
 │   ├── preprocessing_log.md                      # Leakage prevention & transformation rationale
@@ -42,14 +37,24 @@ IT3091-Telco-Churn-Prediction/
 │   ├── final_report.md                           # Master final synthesis report (All 8 rubric criteria)
 │   ├── ai_transparency_declaration.md            # AI-use disclosure & academic integrity declaration
 │   ├── youtube_demo_script.md                    # 3-minute video presentation script
-│   └── personal_learning_journey_templates.md    # 1-page A4 templates for individual grading
+│   ├── personal_learning_journey_templates.md    # Summary templates for individual grading
+│   ├── A4_Journey_IT24200314_Ekanayake.md        # Individual A4 Report: Lead Modeler & Evaluator
+│   ├── A4_Journey_IT24101176_Widumini.md         # Individual A4 Report: Strategy & Docs Lead
+│   ├── A4_Journey_IT24102278_Bandara.md          # Individual A4 Report: Data Understanding & EDA
+│   └── A4_Journey_IT24100427_Wickramathilaka.md  # Individual A4 Report: Preprocessing Pipelines
+├── models/
+│   ├── champion_logistic_regression.joblib       # Serialized champion model weights
+│   ├── champion_model.joblib                     # Champion model backup
+│   └── preprocessor.joblib                       # Serialized fitted ColumnTransformer pipeline
 ├── notebooks/
 │   ├── 01_eda_and_audit.ipynb                    # 8-section visual exploratory analysis
 │   ├── 02_preprocessing_and_feature_engineering.ipynb # Leak-free pipeline & before/after scaling
 │   └── 03_model_training_and_evaluation.ipynb    # 5-Fold CV, ROC/PR curves & cost thresholding
 ├── reports/
 │   ├── cv_model_comparison.csv                   # Cross-validation quantitative benchmark metrics
-│   └── figures/                                  # 9 publication-grade visualization artifacts
+│   └── figures/                                  # 10 publication-grade visualization artifacts
+│       ├── 00_workflow_diagram.png               # End-to-end decision architecture flowchart
+│       └── 01 to 09 diagnostic plots             # Distributions, correlations, ROC, PR, cost curves
 ├── src/
 │   ├── run_eda.py                                # Visual EDA script
 │   ├── preprocessing.py                          # Modular ColumnTransformer pipeline
@@ -58,6 +63,7 @@ IT3091-Telco-Churn-Prediction/
 ├── requirements.txt                              # Pinned dependencies for 100% reproducibility
 ├── LICENSE                                       # Project license
 └── README.md                                     # Master documentation hub
+
 ```
 
 ---

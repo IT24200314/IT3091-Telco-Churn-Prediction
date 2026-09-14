@@ -25,8 +25,12 @@
 
 ---
 
-### 2. Workflow & Master Decision Register (10 Marks)
-The end-to-end architecture connects business problem framing, visual exploratory analysis, preprocessing, cross-validation, and financial threshold optimization. Key decisions logged in `docs/decision_log.md`:
+### 2. Workflow Diagram & Master Decision Register (10 Marks)
+The end-to-end architecture connects business problem framing, visual exploratory analysis, preprocessing, cross-validation, and financial threshold optimization. Detailed interactive diagrams are cataloged in [`docs/workflow_diagram.md`](../docs/workflow_diagram.md) and visual flowchart [`reports/figures/00_workflow_diagram.png`](../reports/figures/00_workflow_diagram.png).
+
+![End-to-End Workflow Architecture](../reports/figures/00_workflow_diagram.png)
+
+Key decisions logged in `docs/decision_log.md`:
 * **DEC-01:** Selection of Guided Data Track (Telecom Churn) based on Group ID ending in 7.
 * **DEC-02:** Rejection of raw accuracy; optimization focused on ROC-AUC, PR-AUC, and Recall.
 * **DEC-03:** Imputation of 11 whitespace instances in `TotalCharges` to `0.0` (all 11 have `tenure = 0`).
@@ -36,6 +40,7 @@ The end-to-end architecture connects business problem framing, visual explorator
 * **DEC-07:** Stratified 5-Fold Cross-Validation used for all candidate model evaluations.
 * **DEC-08:** Logistic Regression with balanced weighting selected as the champion model (CV ROC-AUC: 0.8463, CV Recall: 0.7960).
 * **DEC-09:** Asymmetric cost optimization lowering the decision threshold to $\tau^* = 0.44$, reducing business churn loss by $19,250.
+
 
 ---
 
