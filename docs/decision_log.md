@@ -16,6 +16,9 @@
 | **DEC-04** | 2026-09-14 | Feature Engineering | Raw features only vs. Domain-specific behavioral features | **Engineer `IsAutomaticPayment`, `ServiceBundleCount`, `TenureCohort`** | Visual EDA confirms strong non-linear separation: automatic payment reduces churn 2.4x; bundle adoption reduces churn from 42.2% to 8.6%; tenure cohorts capture 0-12m tenure cliff. |
 | **DEC-05** | 2026-09-14 | Leakage Prevention | Full-dataset scaling vs. Fit on Train only | **Fit `ColumnTransformer` strictly on `X_train`** | Stratified 80/20 train/test split executed prior to fitting scalers/encoders. Prevents optimistic test leakage ($\mu, \sigma$). |
 | **DEC-06** | 2026-09-14 | Class Imbalance | Synthetic oversampling (SMOTE) vs. Cost-sensitive weighting | **Algorithmic Cost Weighting (`balanced`)** | Preserves empirical feature distributions in test data; avoids synthetic artifacts in high-dimensional one-hot encoded spaces. |
+| **DEC-07** | 2026-09-14 | Model Strategy | Single model train vs. Stratified 5-Fold Cross-Validation | **Stratified 5-Fold CV on training split** | Guarantees hyperparameter evaluation generalizability and prevents validation variance on imbalanced target distributions. |
+| **DEC-08** | 2026-09-14 | Model Selection | Accuracy vs. ROC-AUC and Recall optimization | **Prioritize ROC-AUC and Recall** | Because False Negatives (lost customers) cost 10x more than False Positives (retention incentives), high recall is critical. |
+| **DEC-09** | 2026-09-14 | Decision Boundary | Fixed 0.5 probability cutoff vs. Asymmetric Cost Minimization | **Cost-Optimal Cutoff ($\tau^* \approx 0.44$)** | Reducing the decision threshold to cost-optimal cutoff catches significantly more at-risk churners, reducing total business churn expense. |
 
 ---
 
