@@ -192,4 +192,13 @@ plt.tight_layout()
 plt.savefig("reports/figures/09_feature_importances.png", dpi=300)
 plt.close()
 
-print("\nPhase 3 execution complete. Visual figures saved in reports/figures/.")
+# 6. Save Trained Model Artifacts to models/
+import joblib
+best_model = trained_models["Logistic Regression (Baseline)"]
+joblib.dump(best_model, "models/champion_logistic_regression.joblib")
+joblib.dump(best_model, "models/champion_model.joblib")
+joblib.dump(trained_models, "models/all_trained_models.joblib")
+print("[SUCCESS] Champion model exported to models/champion_logistic_regression.joblib and models/champion_model.joblib")
+
+print("\nPhase 3 execution complete. Visual figures saved in reports/figures/ and models saved in models/.")
+

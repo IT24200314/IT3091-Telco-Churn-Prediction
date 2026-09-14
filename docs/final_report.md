@@ -88,3 +88,16 @@ Benchmarking carried out using Stratified 5-Fold Cross-Validation on training da
 ### 8. Reproducibility & AI-Use Transparency (10 Marks)
 * **Reproducibility:** Codebase configured with pinned dependencies in `requirements.txt`, random seed controls (`random_state=42`), and clean runnable Jupyter Notebooks (`01`, `02`, `03`).
 * **AI Declaration:** Generative AI tools were utilized transparently to assist with structuring code, refactoring visual layouts, and reviewing documentation, with all logic and results verified by team members.
+
+---
+
+### 9. 3-Minute Video Demonstration & Presentation Deliverable
+* **YouTube Video Presentation:** [Click here to view unlisted demo presentation (https://youtu.be/DEMO_LINK)](https://youtu.be/DEMO_LINK)  
+  *(Note: Formatted according to the scene-by-scene script in `docs/youtube_demo_script.md`)*
+* **Target Duration:** Exactly 180 seconds (3:00 minutes)
+* **Team Participation:**
+  1. *Scene 1 (0:00–0:35):* Problem Framing & Domain Overview — D G N S Widumini
+  2. *Scene 2 (0:35–1:15):* Data Audit, Tenure Cliff & Leak-Free Pipeline — E J M H D Bandara & H A Wickramathilaka
+  3. *Scene 3 (1:15–2:15):* 5-Fold Cross-Validation, ROC/PR & Cost Curves — U P M U I Ekanayake
+  4. *Scene 4 (2:15–3:00):* 3-Tier Retention Strategy, Financial ROI & Responsible AI — D G N S Widumini
+

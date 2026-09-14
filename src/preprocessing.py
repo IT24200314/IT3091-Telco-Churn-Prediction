@@ -100,6 +100,12 @@ def run_pipeline(input_path: str, output_dir: str):
     y_train.to_csv(os.path.join(output_dir, 'y_train.csv'), index=False)
     y_test.to_csv(os.path.join(output_dir, 'y_test.csv'), index=False)
     
+    # 6. Save fitted preprocessor pipeline to models/
+    import joblib
+    os.makedirs('models', exist_ok=True)
+    joblib.dump(preprocessor, 'models/preprocessor.joblib')
+    print("Fitted preprocessor pipeline exported to models/preprocessor.joblib")
+    
     print(f"Transformed features saved successfully to {output_dir}")
     print(f"Total processed feature count: {len(all_feature_names)}")
 
@@ -108,3 +114,4 @@ if __name__ == '__main__':
         input_path='data/WA_Fn-UseC_-Telco-Customer-Churn.csv',
         output_dir='data/processed'
     )
+
